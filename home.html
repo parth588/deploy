@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big4India - India's Top Rated Professional Services Platform</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Feather Icons for UI elements -->
     <script src="https://unpkg.com/feather-icons"></script>
 
     <script>
@@ -93,16 +90,13 @@
 </head>
 <body>
 
-    <!-- Header Section -->
     <header class="bg-brand-blue shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4">
             <nav class="flex justify-between items-center py-3">
-                <!-- Logo -->
                 <a href="#" class="flex items-center space-x-2">
                     <img src="logo.png" alt="Big4India Logo" class="website-logo w-auto bg-white rounded-md p-1" onerror="this.onerror=null; this.src='https://placehold.co/150x50/3A86FF/ffffff?text=Big4India';">
                 </a>
 
-                <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center space-x-4">
                     <div class="dropdown relative">
                         <button class="dropdown-button flex items-center nav-link-underline text-white hover:text-gray-200">
@@ -184,13 +178,11 @@
                     <a href="#" class="nav-link-underline text-white hover:text-gray-200">Trademark</a>
                 </div>
 
-                <!-- Action Buttons -->
                 <div class="hidden lg:flex items-center space-x-4">
                     <a href="#" class="bg-brand-accent text-white font-semibold px-5 py-2 rounded-lg hover:brightness-95 transition-all">Consult an Expert</a>
                     <a href="#" class="bg-white/20 text-white font-semibold px-5 py-2 rounded-lg hover:bg-white/30 transition-colors">Login</a>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <div class="lg:hidden">
                     <button id="mobile-menu-button" class="text-white hover:text-gray-200">
                         <i data-feather="menu" class="w-7 h-7"></i>
@@ -199,7 +191,6 @@
             </nav>
         </div>
 
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden lg:hidden bg-white px-4 pt-2 pb-4 space-y-2 absolute w-full opacity-0 -translate-y-4">
             <a href="#" class="block text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2">Business Incorporation</a>
             <a href="#" class="block text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2">Registration Services</a>
@@ -215,19 +206,9 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section class="hero-bg text-white py-20 md:py-32">
             <div class="container mx-auto px-4 text-center">
-                <div class="flex justify-center items-center gap-2">
-                    <div class="flex">
-                        <img src="https://placehold.co/40x40/ffffff/000000?text=A" class="rounded-full border-2 border-white -mr-2">
-                        <img src="https://placehold.co/40x40/ffffff/000000?text=B" class="rounded-full border-2 border-white -mr-2">
-                        <img src="https://placehold.co/40x40/ffffff/000000?text=C" class="rounded-full border-2 border-white">
-                    </div>
-                    <span class="font-semibold text-yellow-300">★★★★★</span>
-                    <span class="text-gray-200">4.5/5 (18k+ Reviews)</span>
-                </div>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mt-4 leading-tight">India’s Most <span class="text-white underline decoration-brand-accent decoration-4 underline-offset-8">Affordable</span> Financial & Compliance Partner</h1>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">India’s Most <span class="text-white underline decoration-brand-accent decoration-4 underline-offset-8">Affordable</span> Financial & Compliance Partner</h1>
                 <p class="text-lg md:text-xl text-gray-200 mt-6 max-w-3xl mx-auto">Connecting you with experts to simplify your legal, tax & compliance.</p>
                 
                 <div class="mt-10 max-w-2xl mx-auto">
@@ -247,11 +228,9 @@
             </div>
         </section>
 
-        <!-- Services Section -->
         <section class="py-16 md:py-24 bg-gray-50">
             <div class="container mx-auto px-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                    <!-- Service Card 1: Register your company -->
                     <div class="bg-white p-8 rounded-xl shadow-lg service-card border border-transparent hover:border-brand-blue/30">
                         <img src="https://placehold.co/80x80/e9d5ff/4c1d95?text=💼" alt="Company Icon" class="mb-4 rounded-lg">
                         <h3 class="text-xl font-bold text-gray-800">Register your company</h3>
@@ -262,7 +241,6 @@
                             <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">One Person company <i data-feather="arrow-right" class="w-5 h-5"></i></a>
                         </div>
                     </div>
-                    <!-- Service Card 2: File GST -->
                     <div class="bg-white p-8 rounded-xl shadow-lg service-card border border-transparent hover:border-brand-blue/30">
                         <img src="https://placehold.co/80x80/dcfce7/166534?text=📂" alt="GST Icon" class="mb-4 rounded-lg">
                         <h3 class="text-xl font-bold text-gray-800">File GST</h3>
@@ -273,7 +251,6 @@
                             <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">Reply to GST Notice <i data-feather="arrow-right" class="w-5 h-5"></i></a>
                         </div>
                     </div>
-                    <!-- Service Card 3: Protect IP -->
                     <div class="bg-white p-8 rounded-xl shadow-lg service-card border border-transparent hover:border-brand-blue/30">
                         <img src="https://placehold.co/80x80/fef9c3/854d0e?text=🛡️" alt="IP Icon" class="mb-4 rounded-lg">
                         <h3 class="text-xl font-bold text-gray-800">Protect your IP</h3>
@@ -284,7 +261,6 @@
                             <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">Patent Registration <i data-feather="arrow-right" class="w-5 h-5"></i></a>
                         </div>
                     </div>
-                    <!-- Service Card 4: Maintain Accounts -->
                     <div class="bg-white p-8 rounded-xl shadow-lg service-card border border-transparent hover:border-brand-blue/30">
                         <img src="https://placehold.co/80x80/fee2e2/991b1b?text=📈" alt="Accounts Icon" class="mb-4 rounded-lg">
                         <h3 class="text-xl font-bold text-gray-800">Maintain your Accounts</h3>
@@ -299,7 +275,6 @@
             </div>
         </section>
 
-        <!-- Experts Section -->
         <section class="py-16 md:py-24 bg-white">
             <div class="container mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -345,7 +320,6 @@
             </div>
         </section>
 
-        <!-- AI Business Advisor Section -->
         <section class="py-16 md:py-24 bg-gray-50">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800">Unsure Where to Start?</h2>
@@ -357,14 +331,12 @@
                     </button>
                 </div>
                 <div id="ai-results" class="mt-8 max-w-3xl mx-auto text-left">
-                    <!-- AI suggestions will be dynamically inserted here -->
-                </div>
+                    </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-4 py-12">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
@@ -419,7 +391,6 @@
         </div>
     </footer>
 
-    <!-- Message Modal -->
     <div id="message-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
         <div class="bg-white rounded-lg shadow-xl p-6 w-11/12 md:w-1/3">
             <h3 id="modal-title" class="text-xl font-bold text-gray-800">Message</h3>
