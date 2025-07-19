@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big4India - India's Top Rated Professional Services Platform</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons for UI elements -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <script>
+        // Custom Tailwind CSS Configuration
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'brand-blue': '#3A86FF',
+                'brand-accent': '#E87461',
+              }
+            }
+          }
+        }
+    </script>
+
+    <style>
+        /* Custom styles using the new color scheme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .hero-bg {
+            background-color: #3A86FF; /* Cerulean Blue */
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.1), transparent 30%),
+                radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.08), transparent 40%),
+                linear-gradient(to top right, #3A86FF, #5c9cff);
+        }
+        .nav-link-underline {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link-underline::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #E87461; /* Terracotta */
+            transition: width 0.3s ease;
+        }
+        .nav-link-underline:hover::after {
+            width: 100%;
+        }
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        /* Class for the website logo */
+        .website-logo {
+            height: 4rem; /* 64px. You can easily change this value. */
+        }
+        /* Loading spinner for AI Advisor */
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #3A86FF; /* Cerulean Blue */
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Mobile menu transition */
+        #mobile-menu {
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="bg-brand-blue shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <nav class="flex justify-between items-center py-3">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2">
+                    <img src="logo.png" alt="Big4India Logo" class="website-logo w-auto bg-white rounded-md p-1" onerror="this.onerror=null; this.src='https://placehold.co/150x50/3A86FF/ffffff?text=Big4India';">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <div class="dropdown relative">
+                        <button class="dropdown-button flex items-center nav-link-underline text-white hover:text-gray-200">
+                            Business Incorporation <i data-feather="chevron-down" class="w-4 h-4 ml-1"></i>
+                        </button>
+                        <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 py-2 w-56 z-50">
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Private Limited Company</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">One Person Company (OPC)</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Limited Liability Partnership (LLP)</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Partnership Firm</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sole Proprietorship</a>
+                        </div>
+                    </div>
+                     <div class="dropdown relative">
+                        <button class="dropdown-button flex items-center nav-link-underline text-white hover:text-gray-200">
+                           Registration Services <i data-feather="chevron-down" class="w-4 h-4 ml-1"></i>
+                        </button>
+                        <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 py-2 w-64 z-50">
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MSME / Udyam Registration</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Startup India Registration</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">FSSAI Registration</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Import Export Code</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">PF Registration</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">ESI Registration</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Professional Tax Registration</a>
+                        </div>
+                    </div>
+                     <div class="dropdown relative">
+                        <button class="dropdown-button flex items-center nav-link-underline text-white hover:text-gray-200">
+                           Goods & Services Tax (GST) <i data-feather="chevron-down" class="w-4 h-4 ml-1"></i>
+                        </button>
+                        <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 py-2 w-64 z-50">
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">GST Registration</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">GST Return Filing</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">GST Annual Return (GSTR- 9)</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">GST e-Invoicing</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">GST Cancellation</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">GST Notice</a>
+                        </div>
+                    </div>
+                     <div class="dropdown relative">
+                        <button class="dropdown-button flex items-center nav-link-underline text-white hover:text-gray-200">
+                           Income Taxes (IT) <i data-feather="chevron-down" class="w-4 h-4 ml-1"></i>
+                        </button>
+                        <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 py-2 w-64 z-50">
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">PAN Card</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Income Tax Return Filing</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">TDS Return Filing</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">TAN Registration</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">15CA – 15CB Filing</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Income Tax Notice</a>
+                        </div>
+                    </div>
+                    <div class="dropdown relative">
+                        <button class="dropdown-button flex items-center nav-link-underline text-white hover:text-gray-200">
+                           MCA <i data-feather="chevron-down" class="w-4 h-4 ml-1"></i>
+                        </button>
+                        <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 py-2 w-72 max-h-96 overflow-y-auto z-50">
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Private Limited Annual Compliance</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">One Person Company (OPC) Annual Compliance</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">LLP Annual Compliance</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Business Commencement Certificate (INC-20)</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Company Name Change</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Company Address Change</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">DIN eKYC</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">DIN Reactivation</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Change Director</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Remove Director</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Appointment of Auditor (ADT-1) Filing</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">DPT-3 Filing</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">LLP Annual Return (Form 11)</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">MOA Amendment</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">AOA Amendment</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Winding up – Company</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Winding up – One Person Company</a>
+                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Winding up – LLP</a>
+                        </div>
+                    </div>
+                    <a href="#" class="nav-link-underline text-white hover:text-gray-200">Trademark</a>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="#" class="bg-brand-accent text-white font-semibold px-5 py-2 rounded-lg hover:brightness-95 transition-all">Consult an Expert</a>
+                    <a href="#" class="bg-white/20 text-white font-semibold px-5 py-2 rounded-lg hover:bg-white/30 transition-colors">Login</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-gray-200">
+                        <i data-feather="menu" class="w-7 h-7"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white px-4 pt-2 pb-4 space-y-2 absolute w-full opacity-0 -translate-y-4">
+            <a href="#" class="block text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2">Business Incorporation</a>
+            <a href="#" class="block text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2">Registration Services</a>
+            <a href="#" class="block text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2">Goods & Services Tax (GST)</a>
+            <a href="#" class="block text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2">Income Taxes (IT)</a>
+            <a href="#" class="block text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2">MCA Services</a>
+            <a href="#" class="block text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2">Trademark</a>
+            <div class="border-t border-gray-200 pt-4 space-y-2">
+                <a href="#" class="block text-center bg-brand-accent text-white font-semibold px-5 py-2 rounded-lg hover:brightness-95 transition-all">Consult an Expert</a>
+                <a href="#" class="block text-center bg-gray-200 text-gray-800 font-semibold px-5 py-2 rounded-lg hover:bg-gray-300 transition-colors">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg text-white py-20 md:py-32">
+            <div class="container mx-auto px-4 text-center">
+                <div class="flex justify-center items-center gap-2">
+                    <div class="flex">
+                        <img src="https://placehold.co/40x40/ffffff/000000?text=A" class="rounded-full border-2 border-white -mr-2">
+                        <img src="https://placehold.co/40x40/ffffff/000000?text=B" class="rounded-full border-2 border-white -mr-2">
+                        <img src="https://placehold.co/40x40/ffffff/000000?text=C" class="rounded-full border-2 border-white">
+                    </div>
+                    <span class="font-semibold text-yellow-300">★★★★★</span>
+                    <span class="text-gray-200">4.5/5 (18k+ Reviews)</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mt-4 leading-tight">India’s Most <span class="text-white underline decoration-brand-accent decoration-4 underline-offset-8">Affordable</span> Financial & Compliance Partner</h1>
+                <p class="text-lg md:text-xl text-gray-200 mt-6 max-w-3xl mx-auto">Connecting you with experts to simplify your legal, tax & compliance.</p>
+                
+                <div class="mt-10 max-w-2xl mx-auto">
+                    <div class="relative">
+                        <input type="text" placeholder="Try 'Company Registration'" class="w-full h-16 pl-6 pr-16 rounded-full text-lg text-gray-800 focus:outline-none focus:ring-4 focus:ring-brand-accent/50">
+                        <button class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-brand-accent text-white w-12 h-12 rounded-full flex items-center justify-center hover:brightness-95 transition-all">
+                            <i data-feather="search" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    <div class="mt-6 flex flex-wrap justify-center gap-3">
+                        <a href="#" class="bg-white/10 text-white px-4 py-2 rounded-full text-sm hover:bg-white/20 transition-colors">GST Registration</a>
+                        <a href="#" class="bg-white/10 text-white px-4 py-2 rounded-full text-sm hover:bg-white/20 transition-colors">Company Registration</a>
+                        <a href="#" class="bg-white/10 text-white px-4 py-2 rounded-full text-sm hover:bg-white/20 transition-colors">Accounting & Business Compliance</a>
+                        <a href="#" class="bg-white/10 text-white px-4 py-2 rounded-full text-sm hover:bg-white/20 transition-colors">Trademark</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="py-16 md:py-24 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <!-- Service Card 1: Register your company -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg service-card border border-transparent hover:border-brand-blue/30">
+                        <img src="https://placehold.co/80x80/e9d5ff/4c1d95?text=💼" alt="Company Icon" class="mb-4 rounded-lg">
+                        <h3 class="text-xl font-bold text-gray-800">Register your company</h3>
+                        <p class="text-sm text-gray-500 mb-4">Starting from ₹999/-</p>
+                        <div class="space-y-3">
+                            <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">Private Limited company <i data-feather="arrow-right" class="w-5 h-5"></i></a>
+                            <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">Limited Liability Partnership <i data-feather="arrow-right" class="w-5 h-5"></i></a>
+                            <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">One Person company <i data-feather="arrow-right" class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+                    <!-- Service Card 2: File GST -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg service-card border border-transparent hover:border-brand-blue/30">
+                        <img src="https://placehold.co/80x80/dcfce7/166534?text=📂" alt="GST Icon" class="mb-4 rounded-lg">
+                        <h3 class="text-xl font-bold text-gray-800">File GST</h3>
+                        <p class="text-sm text-gray-500 mb-4">Starting from ₹399/-</p>
+                        <div class="space-y-3">
+                            <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">GST Registration <i data-feather="arrow-right" class="w-5 h-5"></i></a>
+                            <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">GST Filing <i data-feather="arrow-right" class="w-5 h-5"></i></a>
+                            <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">Reply to GST Notice <i data-feather="arrow-right" class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+                    <!-- Service Card 3: Protect IP -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg service-card border border-transparent hover:border-brand-blue/30">
+                        <img src="https://placehold.co/80x80/fef9c3/854d0e?text=🛡️" alt="IP Icon" class="mb-4 rounded-lg">
+                        <h3 class="text-xl font-bold text-gray-800">Protect your IP</h3>
+                        <p class="text-sm text-gray-500 mb-4">Starting from ₹1499/-</p>
+                        <div class="space-y-3">
+                            <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">Trademark Registration <i data-feather="arrow-right" class="w-5 h-5"></i></a>
+                            <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">Copyright Registration <i data-feather="arrow-right" class="w-5 h-5"></i></a>
+                            <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">Patent Registration <i data-feather="arrow-right" class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+                    <!-- Service Card 4: Maintain Accounts -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg service-card border border-transparent hover:border-brand-blue/30">
+                        <img src="https://placehold.co/80x80/fee2e2/991b1b?text=📈" alt="Accounts Icon" class="mb-4 rounded-lg">
+                        <h3 class="text-xl font-bold text-gray-800">Maintain your Accounts</h3>
+                        <p class="text-sm text-gray-500 mb-4">Starting from ₹4999/-</p>
+                        <div class="space-y-3">
+                            <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">Accounting and Book-keeping <i data-feather="arrow-right" class="w-5 h-5"></i></a>
+                            <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">Annual Compliance <i data-feather="arrow-right" class="w-5 h-5"></i></a>
+                            <a href="#" class="flex justify-between items-center text-gray-700 hover:text-brand-blue font-medium">TDS Return Filing <i data-feather="arrow-right" class="w-5 h-5"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experts Section -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    <div class="text-center lg:text-left">
+                        <img src="https://placehold.co/500x500/e0e7ff/4338ca?text=Expert+Illustration" alt="Expert Illustration" class="mx-auto rounded-lg">
+                    </div>
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 leading-tight">350+ Verified CA, CS, and Legal Experts Ready to Streamline Your Business Operations.</h2>
+                        <div class="mt-8 space-y-4">
+                            <a href="#" class="flex items-center p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md hover:bg-brand-blue/10 transition-all">
+                                <div class="bg-brand-blue/20 p-3 rounded-lg mr-4">
+                                    <i data-feather="briefcase" class="w-6 h-6 text-brand-blue"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">Talk to Lawyer</h4>
+                                    <p class="text-gray-600">Provide legal advice, draft contracts, handle litigation.</p>
+                                </div>
+                                <i data-feather="chevron-right" class="w-6 h-6 text-gray-400 ml-auto"></i>
+                            </a>
+                             <a href="#" class="flex items-center p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md hover:bg-brand-blue/10 transition-all">
+                                <div class="bg-brand-blue/20 p-3 rounded-lg mr-4">
+                                    <i data-feather="dollar-sign" class="w-6 h-6 text-brand-blue"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">Talk to Chartered accountant</h4>
+                                    <p class="text-gray-600">Financial auditing, taxation advice, and financial planning.</p>
+                                </div>
+                                <i data-feather="chevron-right" class="w-6 h-6 text-gray-400 ml-auto"></i>
+                            </a>
+                             <a href="#" class="flex items-center p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md hover:bg-brand-blue/10 transition-all">
+                                <div class="bg-brand-blue/20 p-3 rounded-lg mr-4">
+                                    <i data-feather="mail" class="w-6 h-6 text-brand-blue"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-800">Talk to Company secretary</h4>
+                                    <p class="text-gray-600">Advisory on corporate governance, regulatory compliance.</p>
+                                </div>
+                                <i data-feather="chevron-right" class="w-6 h-6 text-gray-400 ml-auto"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Business Advisor Section -->
+        <section class="py-16 md:py-24 bg-gray-50">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800">Unsure Where to Start?</h2>
+                <p class="text-lg md:text-xl text-gray-600 mt-4 max-w-2xl mx-auto">Describe your business goal or problem, and our AI advisor will suggest the right services for you.</p>
+                <div class="mt-8 max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                    <textarea id="business-problem" class="w-full p-4 border border-gray-300 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-brand-blue" rows="4" placeholder="e.g., 'I want to start an online store to sell handmade crafts' or 'I received a tax notice and I don't know what to do'"></textarea>
+                    <button id="get-ai-suggestion" class="mt-4 w-full bg-brand-accent text-white font-bold py-4 px-6 rounded-lg text-lg hover:brightness-95 transition-all flex items-center justify-center gap-2">
+                        ✨ Get AI Suggestion
+                    </button>
+                </div>
+                <div id="ai-results" class="mt-8 max-w-3xl mx-auto text-left">
+                    <!-- AI suggestions will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <div class="col-span-2 lg:col-span-1">
+                    <img src="logo.png" alt="Big4India Logo" class="website-logo w-auto mb-4 bg-white rounded-md p-1" onerror="this.onerror=null; this.src='https://placehold.co/150x50/ffffff/3A86FF?text=Big4India';">
+                    <p class="text-gray-400">Your one-stop platform for professional business services.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold tracking-wide uppercase mb-4">Services</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Company Registration</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">GST Services</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Trademark</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Accounting</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h5 class="font-bold tracking-wide uppercase mb-4">Company</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h5 class="font-bold tracking-wide uppercase mb-4">Legal</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Refund Policy</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h5 class="font-bold tracking-wide uppercase mb-4">Contact</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start"><i data-feather="map-pin" class="w-5 h-5 mr-2 mt-1"></i><span>123 Business St,<br>Mumbai, India</span></li>
+                        <li class="flex items-center"><i data-feather="phone" class="w-5 h-5 mr-2"></i><span>+91 12345 67890</span></li>
+                        <li class="flex items-center"><i data-feather="mail" class="w-5 h-5 mr-2"></i><span>support@big4india.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2024 Big4India. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Message Modal -->
+    <div id="message-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+        <div class="bg-white rounded-lg shadow-xl p-6 w-11/12 md:w-1/3">
+            <h3 id="modal-title" class="text-xl font-bold text-gray-800">Message</h3>
+            <p id="modal-message" class="text-gray-600 mt-2"></p>
+            <button id="modal-close" class="mt-4 w-full bg-brand-accent text-white font-bold py-2 px-4 rounded-lg hover:brightness-95 transition-colors">Close</button>
+        </div>
+    </div>
+
+
+    <script>
+        // Feather Icons initialization
+        feather.replace();
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.remove('opacity-0', '-translate-y-4');
+                }, 10);
+            } else {
+                mobileMenu.classList.add('opacity-0', '-translate-y-4');
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            }
+        });
+        
+        // Click-based Dropdown Menu Logic
+        const dropdownButtons = document.querySelectorAll('.dropdown-button');
+
+        dropdownButtons.forEach(button => {
+            button.addEventListener('click', event => {
+                event.stopPropagation();
+                const menu = button.nextElementSibling;
+                // Close all other menus
+                document.querySelectorAll('.dropdown-menu').forEach(m => {
+                    if (m !== menu) {
+                        m.classList.add('hidden');
+                    }
+                });
+                // Toggle the clicked menu
+                menu.classList.toggle('hidden');
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        window.addEventListener('click', () => {
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.classList.add('hidden');
+            });
+        });
+
+
+        // AI Advisor Logic
+        const getAISuggestionButton = document.getElementById('get-ai-suggestion');
+        const businessProblemTextarea = document.getElementById('business-problem');
+        const aiResultsDiv = document.getElementById('ai-results');
+
+        // Modal Logic
+        const modal = document.getElementById('message-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalMessage = document.getElementById('modal-message');
+        const modalCloseButton = document.getElementById('modal-close');
+
+        function showModal(title, message) {
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        modalCloseButton.addEventListener('click', () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        });
+
+
+        getAISuggestionButton.addEventListener('click', async () => {
+            const problemDescription = businessProblemTextarea.value.trim();
+
+            if (!problemDescription) {
+                showModal('Input Required', 'Please describe your business problem or goal first.');
+                return;
+            }
+
+            // Show loader and clear previous results
+            aiResultsDiv.innerHTML = '<div class="flex justify-center"><div class="loader"></div></div>';
+            getAISuggestionButton.disabled = true;
+            getAISuggestionButton.classList.add('opacity-50', 'cursor-not-allowed');
+
+            const apiKey = ""; // API Key will be injected by the environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+            const prompt = `You are an expert business consultant for a professional services firm in India called Big4India. A user needs help identifying the correct service for their needs.
+
+            User's problem: "${problemDescription}"
+
+            Based on the user's problem, analyze their needs and suggest the most relevant services from the following list. For each suggestion, provide a brief, one-sentence explanation of why it's relevant.
+
+            Available Services:
+            - Private Limited Company
+            - One Person Company (OPC)
+            - Limited Liability Partnership (LLP)
+            - Partnership Firm
+            - Sole Proprietorship
+            - MSME / Udyam Registration
+            - Startup India Registration
+            - FSSAI Registration
+            - Import Export Code
+            - PF Registration
+            - ESI Registration
+            - Professional Tax Registration
+            - GST Registration
+            - GST Return Filing
+            - GST Annual Return (GSTR- 9)
+            - GST e-Invoicing
+            - GST Cancellation
+            - GST Notice
+            - PAN Card
+            - Income Tax Return Filing
+            - TDS Return Filing
+            - TAN Registration
+            - 15CA – 15CB Filing
+            - Income Tax Notice
+            - Private Limited Annual Compliance
+            - One Person Company (OPC) Annual Compliance
+            - LLP Annual Compliance
+            - Business Commencement Certificate (INC-20)
+            - Company Name Change
+            - Company Address Change
+            - DIN eKYC
+            - DIN Reactivation
+            - Change Director
+            - Remove Director
+            - Appointment of Auditor (ADT-1) Filing
+            - DPT-3 Filing
+            - LLP Annual Return (Form 11)
+            - MOA Amendment
+            - AOA Amendment
+            - Winding up – Company
+            - Winding up – One Person Company
+            - Winding up – LLP
+            - Trademark Registration
+            - Copyright Registration
+            - Patent Registration
+            - Accounting and Book-keeping
+            - Annual Compliance`;
+
+            const payload = {
+                contents: [{ role: "user", parts: [{ text: prompt }] }],
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            suggestions: {
+                                type: "ARRAY",
+                                items: {
+                                    type: "OBJECT",
+                                    properties: {
+                                        serviceName: { type: "STRING" },
+                                        explanation: { type: "STRING" }
+                                    },
+                                    required: ["serviceName", "explanation"]
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                
+                aiResultsDiv.innerHTML = ''; // Clear loader
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    
+                    const responseText = result.candidates[0].content.parts[0].text;
+                    const parsedJson = JSON.parse(responseText);
+
+                    if (parsedJson.suggestions && parsedJson.suggestions.length > 0) {
+                        const resultsTitle = document.createElement('h3');
+                        resultsTitle.className = 'text-2xl font-bold text-gray-800 mb-4';
+                        resultsTitle.textContent = 'Our AI Recommends:';
+                        aiResultsDiv.appendChild(resultsTitle);
+
+                        const grid = document.createElement('div');
+                        grid.className = 'grid md:grid-cols-2 gap-4';
+
+                        parsedJson.suggestions.forEach(suggestion => {
+                            const card = document.createElement('div');
+                            card.className = 'bg-white p-6 rounded-lg border border-brand-blue/30 shadow-sm';
+                            card.innerHTML = `
+                                <h4 class="text-lg font-bold text-brand-blue">${suggestion.serviceName}</h4>
+                                <p class="text-gray-600 mt-2">${suggestion.explanation}</p>
+                            `;
+                            grid.appendChild(card);
+                        });
+                        aiResultsDiv.appendChild(grid);
+                    } else {
+                         aiResultsDiv.innerHTML = '<p class="text-gray-600">Our AI could not determine a specific service for your request. Please try rephrasing your problem or contact an expert directly.</p>';
+                    }
+                } else {
+                    throw new Error("Received an invalid response from the AI service.");
+                }
+
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                aiResultsDiv.innerHTML = ''; // Clear loader
+                showModal('An Error Occurred', 'Sorry, we couldn\'t get a suggestion at this time. Please try again later.');
+            } finally {
+                getAISuggestionButton.disabled = false;
+                getAISuggestionButton.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        });
+    </script>
+
+</body>
+</html>
