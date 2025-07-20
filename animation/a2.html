@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Financial Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* --- THEME & COLOR VARIABLES --- */
+        :root {
+            --bg-color: #0d1117;
+            --orb-color: #00aaff;
+            --orb-glow: #00aaff80;
+            --icon-color: #2a2f3b;
+            --icon-border: #444c5a;
+            --icon-hover-border: var(--orb-color);
+            --line-color: #444c5a;
+            --pulse-color: #ffc107;
+            --text-color: #c9d1d9;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- GENERAL SETUP --- */
+        body {
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: var(--font-family);
+            overflow: hidden;
+        }
+
+        /* --- CONTAINER & INTRO ANIMATION --- */
+        .financial-hub-container {
+            position: relative;
+            width: 700px;
+            height: 700px;
+            opacity: 0;
+            animation: fadeInContainer 1s ease forwards;
+        }
+
+        @keyframes fadeInContainer {
+            to { opacity: 1; }
+        }
+
+        /* --- CENTRAL ORB --- */
+        .central-orb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, var(--orb-color) 0%, #005f8d 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--orb-glow), 0 0 30px var(--orb-glow), 0 0 60px #005f8d;
+            transform: translate(-50%, -50%) scale(0);
+            animation: pulse-in 1s ease-out forwards, pulse 3s infinite ease-in-out;
+            animation-delay: 0.5s, 1.5s;
+            z-index: 10;
+        }
+
+        @keyframes pulse-in {
+            to { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        /* --- ICONS --- */
+        .icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: var(--icon-color);
+            border: 1px solid var(--icon-border);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--text-color);
+            z-index: 10;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            transform: scale(0);
+            animation: pop-in 0.5s ease-out forwards;
+        }
+
+        @keyframes pop-in {
+            to { transform: scale(1); }
+        }
+        
+        .icon:hover {
+            border-color: var(--icon-hover-border);
+            transform: scale(1.1);
+        }
+
+        /* --- SVG CONTAINER FOR LINES AND PULSES --- */
+        .data-streams {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* --- CONNECTION LINES --- */
+        .connection-line {
+            stroke: var(--line-color);
+            stroke-width: 1;
+            fill: none;
+            opacity: 0;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw-line 1.5s ease-out forwards;
+        }
+
+        @keyframes draw-line {
+            to { stroke-dashoffset: 0; opacity: 1; }
+        }
+        
+        /* When hovering over an icon, its line will brighten */
+        .icon:hover ~ .data-streams .connection-line {
+             stroke: var(--icon-hover-border);
+             transition: stroke 0.3s ease;
+        }
+
+        /* --- DATA PULSES --- */
+        .data-pulse {
+            fill: var(--pulse-color);
+            r: 3.5;
+            animation: move-pulse 4s linear infinite;
+            box-shadow: 0 0 5px var(--pulse-color), 0 0 10px var(--pulse-color);
+            opacity: 0;
+        }
+        
+        @keyframes move-pulse {
+            0% { 
+                motion-offset: 0%; 
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% { 
+                motion-offset: 100%; 
+                opacity: 0;
+            }
+        }
+        
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .financial-hub-container {
+                width: 95vw;
+                height: 95vw;
+            }
+            .icon {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="financial-hub-container">
+        <div class="central-orb"></div>
+        
+        <div class="icon" data-icon-id="1">📈</div>
+        <div class="icon" data-icon-id="2">📊</div>
+        <div class="icon" data-icon-id="3">$</div>
+        <div class="icon" data-icon-id="4">€</div>
+        <div class="icon" data-icon-id="5">¥</div>
+        <div class="icon" data-icon-id="6">₿</div>
+        <div class="icon" data-icon-id="7">🏦</div>
+
+        <svg class="data-streams"></svg>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.querySelector('.financial-hub-container');
+            const icons = document.querySelectorAll('.icon');
+            const svg = document.querySelector('.data-streams');
+
+            const numIcons = icons.length;
+            const radius = container.offsetWidth * 0.35; // Responsive radius
+            const angleIncrement = (2 * Math.PI) / numIcons;
+            const centerX = container.offsetWidth / 2;
+            const centerY = container.offsetHeight / 2;
+
+            icons.forEach((icon, index) => {
+                const angle = index * angleIncrement - (Math.PI / 2); // Start from top
+                
+                const iconX = centerX + radius * Math.cos(angle);
+                const iconY = centerY + radius * Math.sin(angle);
+                const iconId = icon.getAttribute('data-icon-id');
+                const animationDelay = 1 + index * 0.15; // Staggered intro animation
+
+                // Set icon position
+                icon.style.left = `${iconX - icon.offsetWidth / 2}px`;
+                icon.style.top = `${iconY - icon.offsetHeight / 2}px`;
+                icon.style.animationDelay = `${animationDelay}s`;
+
+                // --- Create SVG path for the connection line ---
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                const pathId = `path-${iconId}`;
+                path.setAttribute('id', pathId);
+                path.setAttribute('class', 'connection-line');
+                // Use a quadratic Bezier curve for a slight arc
+                const controlX = (centerX + iconX) / 2 + (Math.random() - 0.5) * 80;
+                const controlY = (centerY + iconY) / 2 + (Math.random() - 0.5) * 80;
+                path.setAttribute('d', `M ${centerX},${centerY} Q ${controlX},${controlY} ${iconX},${iconY}`);
+                path.style.animationDelay = `${animationDelay}s`;
+                svg.appendChild(path);
+                
+                // --- Create SVG circle for the data pulse ---
+                const pulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                pulse.setAttribute('class', 'data-pulse');
+                
+                // Create the motion path animation for the pulse
+                const animateMotion = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
+                animateMotion.setAttribute('dur', `${3 + Math.random() * 2}s`); // Randomize duration
+                animateMotion.setAttribute('repeatCount', 'indefinite');
+                animateMotion.setAttribute('begin', `${animationDelay + Math.random()}s`);
+                
+                const mpath = document.createElementNS('http://www.w3.org/2000/svg', 'mpath');
+                mpath.setAttributeNS('http://www.w3.org/1999/xlink', 'href', `#${pathId}`);
+                
+                animateMotion.appendChild(mpath);
+                pulse.appendChild(animateMotion);
+                svg.appendChild(pulse);
+                
+                // --- Link hover effects between icon and its line ---
+                icon.addEventListener('mouseover', () => {
+                   path.style.stroke = 'var(--icon-hover-border)';
+                   path.style.strokeWidth = '1.5';
+                });
+                icon.addEventListener('mouseout', () => {
+                   path.style.stroke = 'var(--line-color)';
+                   path.style.strokeWidth = '1';
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big4India - Get Maximum Tax Refund</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons for UI elements -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <script>
+        // Custom Tailwind CSS Configuration
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'b-blue': '#4F46E5',
+                'b-lblue': '#F0F5FF',
+                'b-gray': '#F3F4F6',
+              }
+            }
+          }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
+        .hero {
+            background-color: #F9FAFB;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .b-logo {
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        .b-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        /* Animation for the hero illustration */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        .h-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+        /* Message popup styles */
+        .msg-pop {
+            opacity: 0;
+            transition: all 0.5s ease-in-out;
+            transform: translateY(20px);
+        }
+        .msg-pop.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Scroll animation styles */
+         /* Scroll animation styles */
+        .slide-in {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-in.active {
+            opacity: 1;
+            transform: translateX(0);}
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .Indian-c{
+            width: 8rem;
+            height: 7rem;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="bg-[#F9FAFB] sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <nav class="flex justify-between items-center py-8">
+                <div class="flex items-center space-x-16">
+                    <a href="#" class="flex-shrink-0">
+                        <img src="logo.png" alt="Big4India Logo" class="h-16 w-auto" onerror="this.onerror=null; this.src='https://placehold.co/150x64/4F46E5/ffffff?text=Big4India';">
+                    </a>
+                    <div class="hidden lg:flex items-center space-x-8">
+                        <a href="#" class="text-gray-600 hover:text-b-blue">Products <i data-feather="chevron-down" class="inline w-4 h-4"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-b-blue">Resources <i data-feather="chevron-down" class="inline w-4 h-4"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-b-blue">Company <i data-feather="chevron-down" class="inline w-4 h-4"></i></a>
+                    </div>
+                </div>
+
+                <div class="hidden lg:flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Search..." class="bg-white border border-gray-300 rounded-lg py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-b-blue/50">
+                        <i data-feather="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                    </div>
+                    <a href="#" class="bg-b-blue text-white font-semibold px-5 py-2 rounded-lg hover:bg-blue-700">Login / Sign-up</a>
+                </div>
+
+                <div class="lg:hidden">
+                    <button id="m-btn" class="text-gray-700">
+                        <i data-feather="menu" class="w-7 h-7"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="m-menu" class="hidden lg:hidden bg-white px-4 pt-2 pb-4 space-y-2">
+            <a href="#" class="block text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2">Products</a>
+            <a href="#" class="block text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2">Resources</a>
+            <a href="#" class="block text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2">Company</a>
+            <div class="border-t border-gray-200 pt-4">
+                <a href="#" class="block text-center bg-b-blue text-white font-semibold px-5 py-2 rounded-lg hover:bg-blue-700">Login / Sign-up</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero py-20 lg:py-32">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-left">
+                        <div class="inline-block bg-b-lblue text-b-blue font-semibold px-4 py-2 rounded-full text-sm mb-4">
+                            Dream Big, Go Big4India
+                        </div>
+                        <h1 class="text-4xl lg:text-6xl font-extrabold text-gray-800 leading-tight">India’s Top Pathways, One Platform</h1>
+                        <div class="mt-10 grid sm:grid-cols-2 gap-6">
+                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 card">
+                                <i data-feather="user" class="w-10 h-10 text-b-blue bg-b-lblue p-2 rounded-lg"></i>
+                                <h3 class="text-xl font-bold mt-4">Self ITR filing</h3>
+                                <p class="text-gray-600 mt-1">100% accuracy</p>
+                                <a href="#" class="block mt-6 bg-b-blue text-white font-semibold py-3 px-6 rounded-lg text-center hover:bg-blue-700">File Now</a>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 card">
+                                <i data-feather="users" class="w-10 h-10 text-b-blue bg-b-lblue p-2 rounded-lg"></i>
+                                <h3 class="text-xl font-bold mt-4">Hire an expert</h3>
+                                <p class="text-gray-600 mt-1">ITR filed in 24 hours</p>
+                                <a href="#" class="block mt-6 bg-b-blue text-white font-semibold py-3 px-6 rounded-lg text-center hover:bg-blue-700">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex items-center justify-center">
+                        <div class="relative h-anim">
+                            <img src="model.png" alt="Tax Refund Illustration" class="rounded-full shadow-xl w-[400px] h-[500px] object-cover">
+                            
+                            <!-- Animated Message Popups -->
+                            <div id="popups" class="absolute inset-0">
+                                <div class="msg-pop absolute top-10 -left-20 bg-white p-4 rounded-lg shadow-lg text-sm">Hi! Your company registration is complete 🎉</div>
+                                <div class="msg-pop absolute top-24 -right-24 bg-white p-4 rounded-lg shadow-lg text-sm">GST registration ✔️</div>
+                                <div class="msg-pop absolute bottom-20 -left-24 bg-white p-4 rounded-lg shadow-lg text-sm">Income Tax filed successfully 🧾</div>
+                                <div class="msg-pop absolute bottom-10 right-10 bg-white p-4 rounded-lg shadow-lg text-sm">MCA compliance updated ✅</div>
+                                <div class="msg-pop absolute top-1/2 -left-10 bg-white p-4 rounded-lg shadow-lg text-sm">Trademark filed 🔐</div>
+                                <div class="msg-pop absolute bottom-1/4 -right-16 bg-white p-4 rounded-lg shadow-lg text-sm">All documents safely submitted & verified 🔒</div>
+                                <div class="msg-pop absolute top-5 right-5 bg-white p-4 rounded-lg shadow-lg text-sm">You're all set. We’ll notify you before any next due date ⏰</div>
+                                <div class="msg-pop absolute bottom-5 left-5 bg-white p-4 rounded-lg shadow-lg text-sm">Need help with anything else? We're here 😊</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         
+        <!-- New Animated Section -->
+         
+        </section>
+         <section class="py-20 lg:py-32 bg-white overflow-hidden">
+            <div class="container mx-auto px-4">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="constitution.png" class="Indian-c" alt="Icon">
+                        <h2 class="text-3xl lg:text-5xl font-extrabold text-gray-800">Redefining Finance For Every Indian </h2>
+                        <p class="text-lg text-gray-600 mt-4">We've Got You Covered-From Tax Filling To Company Registration</p>
+                        <div class="mt-8 space-y-4">
+                            <a href="#" class="flex justify-between items-center bg-gray-50 p-6 rounded-2xl card">
+                                <div class="flex items-center">
+                                    <i data-feather="trending-up" class="w-8 h-8 text-green-500 bg-green-100 p-2 rounded-lg"></i>
+                                    <span class="text-lg font-bold ml-4">Business incorporation</span>
+                                </div>
+                                <i data-feather="chevron-right" class="w-6 h-6 text-gray-400"></i>
+                            </a>
+                            <a href="#" class="flex justify-between items-center bg-gray-50 p-6 rounded-2xl card">
+                                <div class="flex items-center">
+                                    <i data-feather="pie-chart" class="w-8 h-8 text-blue-500 bg-blue-100 p-2 rounded-lg"></i>
+                                    <span class="text-lg font-bold ml-4">Registration Services</span>
+                                </div>
+                                <i data-feather="chevron-right" class="w-6 h-6 text-gray-400"></i>
+                            </a>
+                            
+                            <a href="#" class="flex justify-between items-center bg-gray-50 p-6 rounded-2xl card">
+                                <div class="flex items-center">
+                                    <i data-feather="pie-chart" class="w-8 h-8 text-blue-500 bg-blue-100 p-2 rounded-lg"></i>
+                                    <span class="text-lg font-bold ml-4">Goods & Service Tax (GST)</span>
+                                </div>
+                                <i data-feather="chevron-right" class="w-6 h-6 text-gray-400"></i>
+                            </a>
+                            
+                            <a href="#" class="flex justify-between items-center bg-gray-50 p-6 rounded-2xl card">
+                                <div class="flex items-center">
+                                    <i data-feather="pie-chart" class="w-8 h-8 text-blue-500 bg-blue-100 p-2 rounded-lg"></i>
+                                    <span class="text-lg font-bold ml-4">Income Taxes (IT)</span>
+                                </div>
+                                <i data-feather="chevron-right" class="w-6 h-6 text-gray-400"></i>
+                            </a>
+                            
+                            <a href="#" class="flex justify-between items-center bg-gray-50 p-6 rounded-2xl card">
+                                <div class="flex items-center">
+                                    <i data-feather="pie-chart" class="w-8 h-8 text-blue-500 bg-blue-100 p-2 rounded-lg"></i>
+                                    <span class="text-lg font-bold ml-4">MCA</span>
+                                </div>
+                                <i data-feather="chevron-right" class="w-6 h-6 text-gray-400"></i>
+                            </a>
+                            <a href="#" class="flex justify-between items-center bg-gray-50 p-6 rounded-2xl card">
+                                <div class="flex items-center">
+                                    <i data-feather="pie-chart" class="w-8 h-8 text-blue-500 bg-blue-100"></i>
+                                    <span class="text-lg font-bold ml-4">Trademark</span>
+                                </div>
+                                <i data-feather="chevron-right" class="w-6 h-6 text-gray-400"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="slide-in">
+                        <img src="mobile.png" class="rounded-3xl shadow-2xl mx-auto" alt="Phone UI">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         
+         
+            
+         
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                <div class="col-span-2 lg:col-span-1">
+                    <img src="logo.png" alt="Big4India Logo" class="h-12 mb-4 bg-white rounded-md p-1" onerror="this.onerror=null; this.src='https://placehold.co/150x40/ffffff/3A86FF?text=Big4India';">
+                    <p class="text-gray-400">Your one-stop platform for professional business services.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold tracking-wide uppercase mb-4">Products</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-b-blue">ITR Filing</a></li>
+                        <li><a href="#" class="hover:text-b-blue">GST Software</a></li>
+                        <li><a href="#" class="hover:text-b-blue">TaxCloud</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h5 class="font-bold tracking-wide uppercase mb-4">Resources</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-b-blue">Blog</a></li>
+                        <li><a href="#" class="hover:text-b-blue">Tax Guides</a></li>
+                        <li><a href="#" class="hover:text-b-blue">Calculators</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h5 class="font-bold tracking-wide uppercase mb-4">Company</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-b-blue">About Us</a></li>
+                        <li><a href="#" class="hover:text-b-blue">Careers</a></li>
+                        <li><a href="#" class="hover:text-b-blue">Contact Us</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h5 class="font-bold tracking-wide uppercase mb-4">Support</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center"><i data-feather="phone" class="w-5 h-5 mr-2"></i><span>+91 12345 67890</span></li>
+                        <li class="flex items-center"><i data-feather="mail" class="w-5 h-5 mr-2"></i><span>support@big4india.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500">
+                <p>&copy; 2024 Big4India. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+             // Feather Icons initialization
+        feather.replace();
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('m-btn');
+        const mobileMenu = document.getElementById('m-menu');
+        if(mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Message Popup Animation
+        const popups = document.querySelectorAll('.msg-pop');
+        let currentPopup = 0;
+
+        if (popups.length > 0) {
+            // Immediately show the first popup
+            popups[currentPopup].classList.add('visible');
+            currentPopup = 1;
+
+            setInterval(() => {
+                popups.forEach(p => p.classList.remove('visible'));
+                popups[currentPopup].classList.add('visible');
+                currentPopup = (currentPopup + 1) % popups.length;
+            }, 4000);
+        }
+
+        // Scroll Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const revealElements = document.querySelectorAll('.slide-in');
+        if (revealElements.length > 0) {
+            revealElements.forEach(el => observer.observe(el));
+        }
+    </script>
+
+</body>
+</html>

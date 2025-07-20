@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Hub Animation</title>
+    <style>
+        /* CSS Styles */
+        body {
+            background-color: #ffffff; /* White background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        .financial-hub-container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+        }
+
+        .central-orb {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background-color: #007bff; /* A blue color */
+            border-radius: 50%;
+            box-shadow: 0 0 20px #007bff, 0 0 40px #007bff, 0 0 60px #007bff;
+            animation: pulse 2.5s infinite ease-in-out;
+            z-index: 10;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.95);
+                box-shadow: 0 0 20px #007bff, 0 0 40px #007bff, 0 0 60px #007bff;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+                box-shadow: 0 0 30px #007bff, 0 0 50px #007bff, 0 0 70px #007bff;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(0.95);
+                box-shadow: 0 0 20px #007bff, 0 0 40px #007bff, 0 0 60px #007bff;
+            }
+        }
+
+        .icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #f0f0f0;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #333;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+
+        .icon:hover {
+            transform: scale(1.1);
+        }
+
+        .data-streams {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows clicks to go through the SVG */
+        }
+
+        .data-streams path {
+            stroke: #ffc107; /* An amber color */
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 10;
+            animation: dash 4s linear infinite;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -1000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="financial-hub-container">
+        <div class="central-orb"></div>
+        <div class="icon chart">📈</div>
+        <div class="icon graph">📊</div>
+        <div class="icon currency-usd">$</div>
+        <div class="icon currency-eur">€</div>
+        <div class="icon currency-jpy">¥</div>
+        <div class="icon currency-btc">₿</div>
+        
+        <svg class="data-streams"></svg>
+    </div>
+
+    <script>
+        // JavaScript Logic
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.querySelector('.financial-hub-container');
+            const orb = document.querySelector('.central-orb');
+            const icons = document.querySelectorAll('.icon');
+            const svg = document.querySelector('.data-streams');
+
+            const numIcons = icons.length;
+            const radius = 220; // Radius of the circle on which icons are placed
+            const angleIncrement = (2 * Math.PI) / numIcons;
+
+            const orbRect = orb.getBoundingClientRect();
+            const containerRect = container.getBoundingClientRect();
+
+            // Center of the container
+            const centerX = container.offsetWidth / 2;
+            const centerY = container.offsetHeight / 2;
+            
+            // Central orb's center coordinates relative to the container
+            const orbX = centerX;
+            const orbY = centerY;
+
+            icons.forEach((icon, index) => {
+                const angle = index * angleIncrement;
+                
+                // Calculate position for each icon
+                const iconX = centerX + radius * Math.cos(angle);
+                const iconY = centerY + radius * Math.sin(angle);
+
+                // Set icon position (centering the icon itself)
+                icon.style.left = `${iconX - icon.offsetWidth / 2}px`;
+                icon.style.top = `${iconY - icon.offsetHeight / 2}px`;
+
+                // Create SVG path for the data stream
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                // Use a quadratic Bezier curve for a nice arc
+                const controlX = (orbX + iconX) / 2 + (Math.random() - 0.5) * 100;
+                const controlY = (orbY + iconY) / 2 + (Math.random() - 0.5) * 100;
+                path.setAttribute('d', `M ${orbX},${orbY} Q ${controlX},${controlY} ${iconX},${iconY}`);
+                
+                // Randomize animation delay for a more dynamic feel
+                path.style.animationDelay = `${Math.random() * -3}s`;
+
+                svg.appendChild(path);
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+ 

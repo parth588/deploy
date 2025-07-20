@@ -1,0 +1,45 @@
+<!-- Animated Cityscape Section -->
+        <section class="py-20 lg:py-32 cityscape-bg overflow-hidden">
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <h2 class="text-3xl lg:text-5xl font-extrabold text-gray-800"></h2>
+                <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto"></p>
+            </div>
+            <div class="relative h-[500px] -mt-32">
+                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
+                    <!-- Background Gradient -->
+                    <defs>
+                        <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#fce7f3;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#dbeafe;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="1200" height="400" fill="url(#skyGradient)" />
+
+                    <!-- Roads -->
+                    <path d="M -100 350 Q 250 380 600 300 T 1300 250" stroke="#E5E7EB" stroke-width="15" fill="none" />
+                    <path d="M -50 200 Q 300 150 600 200 T 1250 220" stroke="#E5E7EB" stroke-width="10" fill="none" />
+                    
+                    <!-- Buildings -->
+                    <g fill="#D1D5DB"><rect x="120" y="200" width="60" height="150" /><rect x="130" y="180" width="40" height="20" /><rect x="135" y="210" width="30" height="10" class="blink" fill="#F0F5FF" /></g>
+                    <g fill="#E5E7EB"><rect x="250" y="150" width="80" height="200" /><rect x="260" y="130" width="60" height="20" /></g>
+                    <g fill="#D1D5DB"><rect x="450" y="100" width="70" height="250" /><rect x="460" y="80" width="50" height="20" /><rect x="465" y="110" width="40" height="10" class="blink" fill="#F0F5FF" style="animation-delay: 0.5s;"/></g>
+                    <g fill="#E5E7EB"><rect x="600" y="180" width="50" height="170" /></g>
+                    <g fill="#D1D5DB"><rect x="880" y="120" width="60" height="230" /></g>
+                    <g fill="#E5E7EB"><rect x="1050" y="160" width="70" height="190" /></g>
+
+                    <!-- Pings -->
+                    <circle cx="150" cy="180" r="2" fill="none" stroke-width="2" class="ping" style="animation-delay: 0s;"/>
+                    <circle cx="485" cy="80" r="2" fill="none" stroke-width="2" class="ping" style="animation-delay: 1s;"/>
+                    <circle cx="910" cy="120" r="2" fill="none" stroke-width="2" class="ping" style="animation-delay: 2s;"/>
+
+                    <!-- Cars -->
+                    <circle r="5" fill="#4F46E5" class="car">
+                        <animateMotion dur="10s" repeatCount="indefinite" path="M -100 350 Q 250 380 600 300 T 1300 250" />
+                    </circle>
+                     <circle r="4" fill="#E87461" class="car" style="animation-duration: 12s; animation-delay: 2s;">
+                        <animateMotion dur="12s" repeatCount="indefinite" path="M -50 200 Q 300 150 600 200 T 1250 220" />
+                    </circle>
+                </svg>
+            </div>
+            </section>
+        
